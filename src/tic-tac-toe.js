@@ -6,7 +6,7 @@ class TicTacToe {
             [null, null, null],
             [null, null, null],
         ];
-        this.winner = '';
+        this.winner = null;
     }
 
     getCurrentPlayerSymbol() {
@@ -21,9 +21,7 @@ class TicTacToe {
     }
 
     isFinished() {
-
-        this.winner = '';
-        return true || false;
+        return getWinner() || noMoreTurns();
     }
 
     getWinner() {
@@ -50,7 +48,7 @@ class TicTacToe {
     }
 
     noMoreTurns() {
-        return this.turns.join(''), indexOf('0') === -1 ? true : false;
+        return this.turns.flat().some(e => e === null) ? false : true;
     }
 
     isDraw() {
