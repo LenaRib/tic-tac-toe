@@ -7,6 +7,8 @@ class TicTacToe {
             [null, null, null],
         ];
         this.winner = null;
+        this.draw = false;
+        this.gameOver = false;
     }
 
     getCurrentPlayerSymbol() {
@@ -17,11 +19,12 @@ class TicTacToe {
         if (this.turns[rowIndex][columnIndex] === null) {
             this.turns[rowIndex][columnIndex] = this.currentPlayer;
             this.currentPlayer = this.currentPlayer === 'x' ? 'o' : 'x';
+            this.getWinner();
         }
     }
 
     isFinished() {
-        return getWinner();
+        return getWinner() === null ? null : getWinner();
     }
 
     getWinner() {
@@ -39,7 +42,15 @@ class TicTacToe {
             if (winnerCount === 3) this.winner = win;
         }
         if (this.turns[0][0] === this.turns[1][1] && this.turns[1][1] === this.turns[2][2]) this.winner = this.turns[1][1];
-        if (this.turns[0][2] === this.turns[1][1] && this.turns[1][1] === this.turns[2][0]) this.winner = this.turns[1][1]
+        if (this.turns[0][2] === this.turns[1][1] && this.turns[1][1] === this.turns[2][0]) this.winner = this.turns[1][1];
+        
+        if(this.winner !== null) 
+            this.gameOver = true;
+
+        if(this.winner === null && this.noMoreTurns()){
+            this.draw = true;
+            this.gameOver = true;
+        }
 
         return this.winner;
     }
@@ -49,7 +60,7 @@ class TicTacToe {
     }
 
     isDraw() {
-        return this.isFinished() || this.getWinner();
+        return this.draw;
     }
 
     getFieldValue(rowIndex, colIndex) {
