@@ -15,19 +15,6 @@ class TicTacToe {
         return this.currentPlayer;
     }
 
-    nextTurn(rowIndex, columnIndex) {
-        if (this.turns[rowIndex][columnIndex] === null) {
-            this.turns[rowIndex][columnIndex] = this.currentPlayer;
-            this.currentPlayer = this.currentPlayer === 'x' ? 'o' : 'x';
-            this.getWinner();
-        }
-    }
-
-    isFinished() {
-        this.winner = getWinner();
-        return !!(this.isDraw() || this.winner !== null);
-    }
-
     getWinner() {
         for (let i = 0; i < 3; i += 1) {
             if (this.turns[i].every(e => e === 'x')) this.winner = 'x';
@@ -55,13 +42,24 @@ class TicTacToe {
 
         return this.winner;
     }
+    nextTurn(rowIndex, columnIndex) {
+        if (this.turns[rowIndex][columnIndex] === null) {
+            this.turns[rowIndex][columnIndex] = this.currentPlayer;
+            this.currentPlayer = this.currentPlayer === 'x' ? 'o' : 'x';
+            this.getWinner();
+        }
+    }
+
+    isFinished() {
+        return !!(this.isDraw() || this.winner !== null);
+    }
+
 
     noMoreTurns() {
         return this.turns.flat().some(e => e === null) ? false : true;
     }
 
     isDraw() {
-        this.winner = this.getWinner();
         return this.noMoreTurns() && this.winner === null;
     }
 
