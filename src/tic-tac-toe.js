@@ -24,7 +24,8 @@ class TicTacToe {
     }
 
     isFinished() {
-        return getWinner() === null ? null : getWinner();
+        this.winner = getWinner();
+        return !!(this.isDraw() || this.winner !== null);
     }
 
     getWinner() {
