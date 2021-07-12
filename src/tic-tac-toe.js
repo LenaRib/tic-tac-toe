@@ -61,7 +61,8 @@ class TicTacToe {
     }
 
     isDraw() {
-        return this.draw;
+        this.winner = this.getWinner();
+        return this.noMoreTurns() && this.winner === null;
     }
 
     getFieldValue(rowIndex, colIndex) {
