@@ -1,7 +1,5 @@
 ### Tic Tac Toe
 
----
-
 ### Description
 
 Your task is to implement `TicTacToe` class
@@ -37,21 +35,3 @@ should return `matrix[row][col]` value (if any) or `null`
 5. To install all dependencies use [`npm install`](https://docs.npmjs.com/cli/install)  
 6. Run `npm test` in command line or you can run tests in browser with `npm start` and open http://localhost:8080
 7. You will see the number of passing and failing tests. 100% of passing tests is equal to 100p in score  
-
----
-
-### Submit to [rs app](https://app.rs.school)
-1. Open [rs app](https://app.rs.school) and login
-2. Go to [submit task page](https://app.rs.school/course/submit-task?course=rs-2019-q3)
-3. Select your task (tick-tac-toe)
-4. Press the submit button and enjoy
-
----
-
-### Notes
-1. We recommend you to use nodejs of version 14 or lower. If you using any of features that does not supported by node v10, score won't be submitted.
-2. Please be sure that each of your test in limit of 30sec.
-
----
-
-© [lesnitsky](https://github.com/lesnitsky)
